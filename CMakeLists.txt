@@ -15,6 +15,9 @@ option(LIBIGL_WITH_TRIANGLE "Use Triangle" ON)
 target_include_directories(${PROJECT_NAME} INTERFACE external/libigl/include)
 find_package(LIBIGL REQUIRED QUIET)
 
+# eigen (header only library)
+target_include_directories(${PROJECT_NAME} INTERFACE external/eigen)
+
 target_link_libraries(${PROJECT_NAME} INTERFACE  igl::triangle)
 
 # set project include dir
