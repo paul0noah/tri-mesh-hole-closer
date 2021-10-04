@@ -12,14 +12,9 @@
 #include <vector>
 #include <iostream>
 
+#include "utils.h"
+
 namespace tmhc {
-
-inline bool allEqual(Eigen::MatrixXi inp1, Eigen::MatrixXi inp2) {
-    assert(inp1.rows() == inp2.rows());
-    assert(inp1.cols() == inp2.cols());
-
-    return (inp1 - inp2).norm() == 0;
-}
 
 /* extract_edges
     Finds all holes in a given mesh and extract the indices of the boundaries
@@ -69,28 +64,28 @@ bool extract_edges(Eigen::MatrixXi F,
 
         for (int e = 0; e < numEdgesAdded; e++) {
             // edge0
-            if (allEqual( E(e, Eigen::all), edge0.transpose()) ) {
+            if (utils::allEqual( E(e, Eigen::all), edge0.transpose()) ) {
                 found0 = true;
             }
-            else if (allEqual( E(e, Eigen::all), edge0(minusEdge).transpose()) ) {
+            else if (utils::allEqual( E(e, Eigen::all), edge0(minusEdge).transpose()) ) {
                 L(e, 1) = f;
                 found0 = true;
             }
 
             // edge1
-            if (allEqual( E(e, Eigen::all), edge1.transpose()) ) {
+            if (utils::allEqual( E(e, Eigen::all), edge1.transpose()) ) {
                 found1 = true;
             }
-            else if (allEqual( E(e, Eigen::all), edge1(minusEdge).transpose()) ) {
+            else if (utils::allEqual( E(e, Eigen::all), edge1(minusEdge).transpose()) ) {
                 L(e, 1) = f;
                 found1 = true;
             }
 
             // edge2
-            if (allEqual( E(e, Eigen::all), edge2.transpose()) ) {
+            if (utils::allEqual( E(e, Eigen::all), edge2.transpose()) ) {
                 found2 = true;
             }
-            else if (allEqual( E(e, Eigen::all), edge2(minusEdge).transpose()) ) {
+            else if (utils::allEqual( E(e, Eigen::all), edge2(minusEdge).transpose()) ) {
                 L(e, 1) = f;
                 found2 = true;
             }

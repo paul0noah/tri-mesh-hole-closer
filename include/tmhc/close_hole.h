@@ -14,30 +14,9 @@
 #include <igl/triangle/triangulate.h>
 
 #include "extract_edges.h"
+#include "utils.h"
 
 namespace tmhc {
-
-const float getTriangleArea(Eigen::MatrixXi triangle, Eigen::MatrixXf V) {
-    // get vertices of the triangle
-    Eigen::Vector3f v0 = V.row(triangle(0));
-    Eigen::Vector3f v1 = V.row(triangle(1));
-    Eigen::Vector3f v2 = V.row(triangle(2));
-
-    // extract two edges
-    Eigen::Vector3f e1 = v0 - v1;
-    Eigen::Vector3f e2 = v0 - v2;
-
-    // triangle area via cross product
-    return 0.5 * e1.cross(e2).norm();
-}
-
-Eigen::MatrixXf getTriangleAreas(Eigen::MatrixXi F, Eigen::MatrixXf V) {
-    Eigen::MatrixXf areas(F.rows(), 1);
-    for (int i = 0; i < F.rows(); i++) {
-        areas(i) = getTriangleArea(F(i, Eigen::all), V);
-    }
-    return areas;
-}
 
 /* close_hole
     closes a hole in a triangle mesh using libigl triangle function and svd
@@ -57,7 +36,7 @@ bool close_hole(Eigen::MatrixXd V,
                 Eigen::MatrixXd &Vclosed,
                 Eigen::MatrixXi &Fclosed) {
 
-
+    using namespace tmhc;
     // find plane which best fits all boundary points via svd
     Eigen::MatrixXf BoundaryPoints(holeBoundaryEdges.size(), 3);
     Eigen::MatrixXi boundEdgeToVertMap(holeBoundaryEdges.size(), 1);
@@ -93,7 +72,7 @@ bool close_hole(Eigen::MatrixXd V,
     Eigen::MatrixXi Fpatch;
 
 
-    const float meanTriangleArea = getTriangleAreas(F, V.cast<float>()).mean();
+    const float meanTriangleArea = utils::getTriangleAreas(F, V.cast<float>()).mean();
 
     // Triangulate the interior of Vbound2D connected with Ebound
     //  - a0.005 means that the area of each triangle should
