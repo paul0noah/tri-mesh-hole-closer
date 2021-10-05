@@ -23,7 +23,7 @@ namespace tmhc {
         - holeEdgeIndices: indices of edges of each hole => each hole has its own std::vector
     returns number of holes
  */
-int find_holes(Eigen::MatrixXi F,
+inline int find_holes(Eigen::MatrixXi F,
                Eigen::MatrixXi E,
                Eigen::MatrixXi L,
                std::vector<std::vector<int>> &holeEdgeIndices) {

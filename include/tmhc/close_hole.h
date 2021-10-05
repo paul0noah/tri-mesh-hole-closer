@@ -29,7 +29,7 @@ namespace tmhc {
         - surfaceFaring: do surface fairing
     returns true if the hole was completely closed
  */
-bool close_hole(Eigen::MatrixXd V,
+inline bool close_hole(Eigen::MatrixXd V,
                 Eigen::MatrixXi F,
                 Eigen::MatrixXi E,
                 std::vector<int> holeBoundaryEdges,

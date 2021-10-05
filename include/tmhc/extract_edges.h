@@ -25,7 +25,7 @@ namespace tmhc {
              => any "-1" int the second column of L means that we did not find both orientations
     returns if mesh is watertight
  */
-bool extract_edges(Eigen::MatrixXi F,
+inline bool extract_edges(Eigen::MatrixXi F,
                    Eigen::MatrixXi &E,
                    Eigen::MatrixXi &L) {
     using namespace tmhc;

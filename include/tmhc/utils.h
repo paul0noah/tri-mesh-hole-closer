@@ -22,7 +22,7 @@ inline bool allEqual(Eigen::MatrixXi inp1, Eigen::MatrixXi inp2) {
     return (inp1 - inp2).norm() == 0;
 }
 
-const float getTriangleArea(Eigen::MatrixXi triangle, Eigen::MatrixXf V) {
+inline const float getTriangleArea(Eigen::MatrixXi triangle, Eigen::MatrixXf V) {
     // get vertices of the triangle
     Eigen::Vector3f v0 = V.row(triangle(0));
     Eigen::Vector3f v1 = V.row(triangle(1));
@@ -36,7 +36,7 @@ const float getTriangleArea(Eigen::MatrixXi triangle, Eigen::MatrixXf V) {
     return 0.5 * e1.cross(e2).norm();
 }
 
-Eigen::MatrixXf getTriangleAreas(Eigen::MatrixXi F, Eigen::MatrixXf V) {
+inline Eigen::MatrixXf getTriangleAreas(Eigen::MatrixXi F, Eigen::MatrixXf V) {
     Eigen::MatrixXf areas(F.rows(), 1);
     for (int i = 0; i < F.rows(); i++) {
         areas(i) = getTriangleArea(F(i, Eigen::all), V);
@@ -44,7 +44,7 @@ Eigen::MatrixXf getTriangleAreas(Eigen::MatrixXi F, Eigen::MatrixXf V) {
     return areas;
 }
 
-Eigen::MatrixXi linspaced(int start, int end, int step) {
+inline Eigen::MatrixXi linspaced(int start, int end, int step) {
     assert(step > 0);
     assert(end > start);
     int length = (end - start)/step;
@@ -55,7 +55,7 @@ Eigen::MatrixXi linspaced(int start, int end, int step) {
     return A;
 }
 
-Eigen::MatrixXi linspaced(int start, int end) {
+inline Eigen::MatrixXi linspaced(int start, int end) {
     return linspaced(start, end, 1);
 }
 

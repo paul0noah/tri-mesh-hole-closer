@@ -28,7 +28,7 @@ namespace tmhc {
         - surfaceFaring: do surface fairing
     returns number of holes
  */
-int close_holes(Eigen::MatrixXd V,
+inline int close_holes(Eigen::MatrixXd V,
                 Eigen::MatrixXi F,
                 Eigen::MatrixXd &Vclosed,
                 Eigen::MatrixXi &Fclosed,
@@ -67,7 +67,7 @@ int close_holes(Eigen::MatrixXd V,
     return numHoles;
 }
 
-int close_holes(Eigen::MatrixXd V,
+inline int close_holes(Eigen::MatrixXd V,
                 Eigen::MatrixXi F,
                 Eigen::MatrixXd &Vclosed,
                 Eigen::MatrixXi &Fclosed) {
