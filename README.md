@@ -6,7 +6,7 @@ This library closes holes of triangular meshes as follows
 2) Projects each boundary of a hole to a best fitting 2D plane with help of [SVD or rather PCA]( https://stats.stackexchange.com/questions/172300/low-rank-svd-reconstruction-and-linear-projection-of-the-data)
 3) Uses `libigl::triangulate` function to obtain new points and nice triangulation in the inside of the hole
 4) Projects the data back up in 3D space
-5) Performs surface fairing inspired by [this article](https://erkaman.github.io/posts/hole_filling.html) to smooth out the new triangulation within the holes (this is not yet implemented)
+5) Performs surface fairing inspired by [this article](https://erkaman.github.io/posts/hole_filling.html) to smooth out the new triangulation within the holes
 
 ## Usage
 
