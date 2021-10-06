@@ -15,6 +15,10 @@ This library closes holes of triangular meshes as follows
     add_subdirectory(path/to/tri-mesh-hole-closer)
     target_link_libraries(your_project tri-mesh-hole-closer)
     ```
+    if you use libigl already within your project add the following line to your CMake
+    ```
+    option(LIBIGL_WITH_TRIANGLE "Use Triangle" ON)
+    ```
 2) Include the following header
     ```
     #include <tmhc/close_holes.h>

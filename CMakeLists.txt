@@ -13,6 +13,7 @@ add_library(${PROJECT_NAME} INTERFACE)
 # libigl
 option(LIBIGL_WITH_TRIANGLE "Use Triangle" ON)
 target_include_directories(${PROJECT_NAME} INTERFACE external/libigl/include)
+target_include_directories(${PROJECT_NAME} INTERFACE external/libigl/external/triangle)
 find_package(LIBIGL REQUIRED QUIET)
 
 # eigen (header only library)
