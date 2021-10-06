@@ -15,6 +15,7 @@
 #include "find_holes.h"
 #include "extract_edges.h"
 #include "close_hole.h"
+#include "surface_fairing.h"
 
 namespace tmhc {
 
@@ -37,6 +38,7 @@ inline int close_holes(Eigen::MatrixXd V,
     assert(F.cols() == 3);
     assert(F.maxCoeff() < V.rows());
 
+    const int numOldPoints = V.rows();
     using namespace tmhc;
 
     // extract edges to check watertightness
@@ -62,8 +64,11 @@ inline int close_holes(Eigen::MatrixXd V,
     }
 
     if (surfaceFaring && Vclosed.rows() > V.rows()) {
-        std::cout << "SurfaceFaring not yet implemented" << std::endl;
+        surface_fairing(Vwork, Fwork, numOldPoints, holeEdgeIndices);
     }
+
+    Vclosed = Vwork;
+    Fclosed = Fwork;
     return numHoles;
 }
 
