@@ -40,6 +40,7 @@ We need the following libraries
 | ------ | ------ |
 | libigl | `https://github.com/libigl/libigl` | 
 | Eigen3 | `https://gitlab.com/libeigen/eigen` |
+| Robin-Map | `https://github.com/Tessil/robin-map` |
 
 ## License
 

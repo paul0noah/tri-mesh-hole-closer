@@ -4,3 +4,6 @@
 [submodule "eigen"]
 	path = external/eigen
 	url = https://gitlab.com/libeigen/eigen
+[submodule "external/robin-map"]
+	path = external/robin-map
+	url = https://github.com/Tessil/robin-map.git

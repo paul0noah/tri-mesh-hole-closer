@@ -19,6 +19,9 @@ find_package(LIBIGL REQUIRED QUIET)
 # eigen (header only library)
 target_include_directories(${PROJECT_NAME} INTERFACE external/eigen)
 
+# robin-map (header only library)
+target_include_directories(${PROJECT_NAME} INTERFACE external/robin-map)
+
 target_link_libraries(${PROJECT_NAME} INTERFACE  igl::triangle)
 
 # set project include dir
